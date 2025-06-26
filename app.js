@@ -10,6 +10,10 @@ const PORT = process.env.PORT || 8080;
 
 // body parser middleware
 app.use(express.json());
+app.use((req, res, next) => {
+  req.timestamp = new Date();
+  next();
+});
 
 app.use(cors()); // allow all origins
 
